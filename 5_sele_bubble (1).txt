@@ -1,0 +1,52 @@
+def selection_sort(arr):
+  n = len(arr)
+
+  for i in range(n - 1):
+    min_index = i
+    for j in range(i + 1, n):
+      if arr[j] < arr[min_index]:
+        # Swap elements
+        temp = arr[j]
+        arr[j] = arr[min_index]
+        arr[min_index] = temp
+
+def bubble_sort(arr):
+  n = len(arr)
+
+  for i in range(n - 1):
+    for j in range(0, n - i - 1):
+      if arr[j] > arr[j + 1]:
+        # Swap elements
+        temp = arr[j]
+        arr[j] = arr[j + 1]
+        arr[j + 1] = temp
+
+def display_top_five(arr):
+  print("Top five scores:")
+  for i in range(min(5, len(arr))):
+    print(f"{i + 1}. {arr[i]}%")
+
+def main():
+  # Ask user for number of scores
+  num_scores = int(input("Enter the number of first-year percentages: "))
+
+  # Collect user input for each score
+  percentages = []
+  for i in range(num_scores):
+    score = float(input(f"Enter percentage {i + 1}: "))
+    percentages.append(score)
+
+  # Sort using Selection Sort
+  selection_sorted = percentages.copy()
+  selection_sort(selection_sorted)
+  print("\nSorted using Selection Sort:", selection_sorted)
+  display_top_five(selection_sorted)
+
+  # Sort using Bubble Sort
+  bubble_sorted = percentages.copy()
+  bubble_sort(bubble_sorted)
+  print("\nSorted using Bubble Sort:", bubble_sorted)
+  display_top_five(bubble_sorted)
+
+if __name__ == "__main__":
+  main()
